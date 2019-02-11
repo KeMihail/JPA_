@@ -6,23 +6,24 @@ import com.epam.house.dao.hibernate.impl.PeopleDaoImpl;
 import com.epam.house.entity.House;
 import com.epam.house.entity.People;
 
+import java.util.List;
 
-public class Main
-{
-	public static void main(final String[] args)
-	{
-		Integer id = 1;
 
-		House house = new House();
-		house.setNumber("m_number");
-		house.setStreet("m_street");
+public class Main {
+    public static void main(final String[] args) {
+        JPAHouseDao dao = new JPAHouseDao();
 
-		JPAHouseDao dao = new JPAHouseDao();
+	/*	House house = new House();
+		house.setNumber("m_number_one");
+		house.setStreet("m_street_one");
 		house.setId(dao.save(house));
+		  house.setId(dao.save(house));
+*/
 
-		house.setStreet("u_street");
-		dao.update(house);
 
-		System.out.println(house);
-	}
+        final List<House> list = dao.getAll();
+        for (final House item: list) {
+            System.out.println(item);
+        }
+    }
 }
