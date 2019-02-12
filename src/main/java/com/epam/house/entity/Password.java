@@ -3,12 +3,14 @@ package com.epam.house.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
 @Entity
 @Table
+@NamedQuery(name = "password.getAll",query = "select p from Password p")
 public class Password
 {
 	@Id

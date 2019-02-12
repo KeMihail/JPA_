@@ -1,6 +1,7 @@
-package dao;
+package dao.hibernate;
 
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -59,8 +60,8 @@ public class HouseDaoTest
 		Assert.assertNull(dao.getById(source.getId()));
 	}
 
-	/*@After
+	@After
 	public void cleanData(){
-		houseDao.remove(source);
-	}*/
+		dao.remove(source);
+	}
 }

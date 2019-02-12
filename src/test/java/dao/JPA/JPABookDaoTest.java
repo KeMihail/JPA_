@@ -1,45 +1,45 @@
-package dao;
+package dao.JPA;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.epam.house.dao.hibernate.impl.BookDaoImpl;
+import com.epam.house.dao.JPA.JPABookDaoImpl;
 import com.epam.house.entity.Book;
 
 
-public class BookDaoTest
+public class JPABookDaoTest
 {
-	private BookDaoImpl dao = new BookDaoImpl();
+	private JPABookDaoImpl dao = new JPABookDaoImpl();
 	private Book source = new Book();
 
 	private Integer count_book;
-	private static final String AUTHOR = "t_author";
-	private static final String NAME = "t_name";
-	private static final String NAME_ = "t_name_";
+	private static final String AUTHOR = "jpa_author";
+	private static final String NAME = "jpa_name";
+	private static final String NAME_ = "jpa_name_";
 
 	@Before
-	public void setUp(){
+	public void setUp()
+	{
 
 		count_book = dao.getAll().size();
 
 		source.setAuthor(AUTHOR);
 		source.setName(NAME);
 		source.setId(dao.save(source));
-
 	}
 
 	@Test
-	public void testBook(){
-
+	public void testBook()
+	{
 		// getById:
 		Book target = dao.getById(source.getId());
 
 		Assert.assertNotNull(target);
-		Assert.assertEquals(target.getId(),source.getId());
-		Assert.assertEquals(target.getName(),NAME);
-		Assert.assertEquals(target.getAuthor(),AUTHOR);
+		Assert.assertEquals(target.getId(), source.getId());
+		Assert.assertEquals(target.getName(), NAME);
+		Assert.assertEquals(target.getAuthor(), AUTHOR);
 
 		// update:
 		source.setName(NAME_);
@@ -48,10 +48,10 @@ public class BookDaoTest
 		target = dao.getById(source.getId());
 
 		Assert.assertNotNull(target);
-		Assert.assertEquals(target.getName(),NAME_);
+		Assert.assertEquals(target.getName(), NAME_);
 
 		// getAll:
-		Assert.assertEquals(++count_book,Integer.valueOf(dao.getAll().size()));
+		Assert.assertEquals(++count_book, Integer.valueOf(dao.getAll().size()));
 
 		// remove:
 		dao.remove(source);
@@ -60,7 +60,9 @@ public class BookDaoTest
 	}
 
 	@After
-	public void cleanData(){
+	public void cleanData()
+	{
 
 	}
+
 }

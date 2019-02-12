@@ -1,26 +1,27 @@
-package dao;
+package dao.JPA;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.epam.house.dao.hibernate.impl.PeopleDaoImpl;
+import com.epam.house.dao.JPA.JPAPeopleDaoImpl;
 import com.epam.house.entity.People;
 
 
-public class PeopleDaoTest
+public class JPAPeoppleDaoTest
 {
-	private PeopleDaoImpl dao = new PeopleDaoImpl();
+	private JPAPeopleDaoImpl dao = new JPAPeopleDaoImpl();
 	private People source = new People();
 
 	private Integer count_people;
-	private static final String NAME = "t_name";
-	private static final String EMAIL = "t_email";
-	private static final String EMAIL_ = "t_email_";
+	private static final String NAME = "jpa_name";
+	private static final String EMAIL = "jpa_email";
+	private static final String EMAIL_ = "jpa_email_";
 
 	@Before
-	public void setUp(){
+	public void setUp()
+	{
 
 		count_people = dao.getAll().size();
 
@@ -30,15 +31,16 @@ public class PeopleDaoTest
 	}
 
 	@Test
-	public void testPeople(){
+	public void testPeople()
+	{
 
 		// getById:
 		People target = dao.getById(source.getId());
 
 		Assert.assertNotNull(target);
-		Assert.assertEquals(target.getId(),source.getId());
-		Assert.assertEquals(target.getName(),NAME);
-		Assert.assertEquals(target.getEmail(),EMAIL);
+		Assert.assertEquals(target.getId(), source.getId());
+		Assert.assertEquals(target.getName(), NAME);
+		Assert.assertEquals(target.getEmail(), EMAIL);
 
 		// update:
 		source.setEmail(EMAIL_);
@@ -46,20 +48,20 @@ public class PeopleDaoTest
 
 		target = dao.getById(source.getId());
 		Assert.assertNotNull(target);
-		Assert.assertEquals(target.getEmail(),EMAIL_);
+		Assert.assertEquals(target.getEmail(), EMAIL_);
 
 		// getAll:
-		Assert.assertEquals(++count_people,Integer.valueOf(dao.getAll().size()));
+		Assert.assertEquals(++count_people, Integer.valueOf(dao.getAll().size()));
 
 		//remove:
-
 		dao.remove(source);
 		Assert.assertNull(dao.getById(source.getId()));
 
 	}
 
 	@After
-	public void cleanData(){
-
+	public void cleanData()
+	{
+		dao.remove(source);
 	}
 }

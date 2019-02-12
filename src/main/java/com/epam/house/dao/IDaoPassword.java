@@ -11,6 +11,8 @@ public interface IDaoPassword
 
 	void update(final Password password);
 
+	void remove(final Password password);
+
 	Password getById(final Integer id);
 
 	List<Password> getAll();

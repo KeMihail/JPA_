@@ -50,6 +50,22 @@ public class PasswordDaoImpl implements IDaoPassword
 		}
 	}
 
+	public void remove(final Password password)
+	{
+		try
+		{
+			final Session session = sessionFactory.openSession();
+			final Transaction transaction = session.beginTransaction();
+			session.remove(password);
+			transaction.commit();
+			session.close();
+		}
+		catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+	}
+
 	public Password getById(final Integer id)
 	{
 
