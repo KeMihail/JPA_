@@ -1,18 +1,28 @@
-package dao.hibernate;
+package dao;
+
+import javax.annotation.Resource;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.epam.house.dao.hibernate.impl.PeopleDaoImpl;
+import com.epam.house.dao.IDaoPeople;
+import com.epam.house.dao.hibernate.PeopleDaoImpl;
 import com.epam.house.entity.People;
 
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:spring/context.xml")
 public class PeopleDaoTest
 {
-	private PeopleDaoImpl dao = new PeopleDaoImpl();
-	private People source = new People();
+	@Resource(name = "peopleDaoJPA")
+	private IDaoPeople dao;
+
+	@Resource(name = "people")
+	private People source;
 
 	private Integer count_people;
 	private static final String NAME = "t_name";

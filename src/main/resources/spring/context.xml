@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+    <bean id="house" class="com.epam.house.entity.House"/>
+    <bean id="houseDaoHibernate" class="com.epam.house.dao.hibernate.HouseDaoImpl"/>
+    <bean id="houseDaoJPA" class="com.epam.house.dao.JPA.JPAHouseDaoImpl"/>
+
+    <bean id="book" class="com.epam.house.entity.Book"/>
+    <bean id="bookDaoHibernate" class="com.epam.house.dao.hibernate.BookDaoImpl"/>
+    <bean id="bookDaoJPA" class="com.epam.house.dao.JPA.JPABookDaoImpl"/>
+
+    <bean id="people" class="com.epam.house.entity.People"/>
+    <bean id="peopleDaoHibernate" class="com.epam.house.dao.hibernate.PeopleDaoImpl"/>
+    <bean id="peopleDaoJPA" class="com.epam.house.dao.JPA.JPAPeopleDaoImpl"/>
+
+    <bean id="password" class="com.epam.house.entity.Password"/>
+    <bean id="passwordDaoHibernate" class="com.epam.house.dao.hibernate.PasswordDaoImpl"/>
+    <bean id="passwordDaoJPA" class="com.epam.house.dao.JPA.JPAPasswordDaoImpl"/>
+
+</beans>

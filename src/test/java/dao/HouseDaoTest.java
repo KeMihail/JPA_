@@ -1,19 +1,32 @@
-package dao.hibernate;
+package dao;
 
+
+import javax.annotation.Resource;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.epam.house.dao.hibernate.impl.HouseDaoImpl;
+import com.epam.house.dao.IDaoHouse;
+import com.epam.house.dao.hibernate.HouseDaoImpl;
 import com.epam.house.entity.House;
 
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:spring/context.xml")
 public class HouseDaoTest
 {
-	private HouseDaoImpl dao = new HouseDaoImpl();
-	private House source = new House();
+	@Resource(name = "houseDaoJPA")
+	private IDaoHouse dao;
+
+	@Resource(name = "house")
+	private House source;
+
 	private Integer count_house;
 
 	private static final String STREET = "t_street";

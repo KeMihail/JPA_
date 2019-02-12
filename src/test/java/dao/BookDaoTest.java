@@ -1,18 +1,28 @@
-package dao.hibernate;
+package dao;
+
+import javax.annotation.Resource;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.epam.house.dao.hibernate.impl.BookDaoImpl;
+import com.epam.house.dao.IDaoBook;
+import com.epam.house.dao.hibernate.BookDaoImpl;
 import com.epam.house.entity.Book;
 
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:spring/context.xml")
 public class BookDaoTest
 {
-	private BookDaoImpl dao = new BookDaoImpl();
-	private Book source = new Book();
+	@Resource(name = "bookDaoJPA")
+	private IDaoBook dao;
+
+	@Resource(name = "book")
+	private Book source;
 
 	private Integer count_book;
 	private static final String AUTHOR = "t_author";

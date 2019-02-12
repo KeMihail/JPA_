@@ -1,4 +1,4 @@
-package com.epam.house.dao.hibernate.impl;
+package com.epam.house.dao.hibernate;
 
 import java.util.List;
 
